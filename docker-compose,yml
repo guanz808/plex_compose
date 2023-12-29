@@ -30,13 +30,13 @@ volumes:
     driver_opts:
       type: nfs
       o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
-      device: ":/volume1/docker/entertainment/tv" 
+      device: ":/volume1/entertainment/tv" 
   movies:
     driver: local
     driver_opts:
       type: nfs
       o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
-      device: ":/volume1/docker/entertainment/movies" 
+      device: ":/volume1/entertainment/movies" 
 
 networks:
   infrastructure_frontend:
