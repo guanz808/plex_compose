@@ -2,7 +2,7 @@
 version: "3.8"
 services:
   plex:
-    image: lscr.io/linuxserver/plex:latest
+    image: linuxserver/plex #lscr.io/linuxserver/plex:latest
     container_name: plex
     networks:
       - infrastructure_frontend  
