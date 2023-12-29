@@ -12,6 +12,7 @@ services:
       - TZ=Pacific/Honolulu
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
+      - HOSTNAME="plex"
     volumes:
       - config:/config
       - tv:/tv
