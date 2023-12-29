@@ -11,7 +11,7 @@ services:
       - PGID=1000
       - TZ=Pacific/Honolulu
       - VERSION=docker
-      - PLEX_CLAIM=  # optional
+      - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
       - config:/config
       - tv:/tv
