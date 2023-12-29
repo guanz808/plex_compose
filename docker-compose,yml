@@ -2,8 +2,7 @@
 version: "3.8"
 services:
   plex:
-    #image: lscr.io/linuxserver/plex:latest
-    image: nginx
+    image: lscr.io/linuxserver/plex:latest
     container_name: plex
     networks:
       - infrastructure_frontend  
@@ -13,31 +12,33 @@ services:
       - TZ=Pacific/Honolulu
       - VERSION=docker
       - PLEX_CLAIM= #optional
-#    volumes:
-#      - config:/config
-#      - tv:/tv
-#      - movies:/movies
+    volumes:
+      - config:/config
+      - tv:/tv
+      - movies:/movies
+    ports:
+      - 32400:32400      
     restart: unless-stopped
 
-#volumes:
-#  config:
-#    driver: local
-#    driver_opts:
-#      type: nfs
-#      o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
-#      device: ":/volume1/docker/plex/config"
-#  tv:
-#    driver: local
-#    driver_opts:
-#      type: nfs
-#      o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
-#      device: ":/volume1/entertainment/tv" 
-#  movies:
-#    driver: local
-#    driver_opts:
-#      type: nfs
-#      o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
-#      device: ":/volume1/entertainment/movies" 
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
+      device: ":/volume1/docker/plex/config"
+  tv:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
+      device: ":/volume1/entertainment/tv" 
+  movies:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
+      device: ":/volume1/entertainment/movies" 
 
 networks:
   infrastructure_frontend:
