@@ -4,8 +4,8 @@ services:
   plex:
     image: plexinc/pms-docker #linuxserver/plex #lscr.io/linuxserver/plex:latest
     container_name: plex
-    networks:
-      - infrastructure_frontend  
+    #networks:
+    #  - infrastructure_frontend  
     environment:
       - PUID=0
       - PGID=0
@@ -41,7 +41,7 @@ volumes:
       o: "addr=192.168.1.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
       device: ":/volume1/entertainment/movies"       
 
-networks:
-  infrastructure_frontend:
-    external: true
-    name: infrastructure_frontend       
+#networks:
+#  infrastructure_frontend:
+#    external: true
+#    name: infrastructure_frontend       
