@@ -4,8 +4,17 @@ services:
   plex:
     image: plexinc/pms-docker #linuxserver/plex #lscr.io/linuxserver/plex:latest
     container_name: plex
-    #networks:
-    #  - infrastructure_frontend  
+    networks:
+      - frontend 
+    labels:
+      - "traefik.enable=true"
+      # Define a router for Plex
+      - "traefik.http.routers.plex.rule=Host(`plex.dajays.com`)" # Replace with your subdomain
+      - "traefik.http.routers.plex.entrypoints=https" # Use websecure for HTTPS
+      # If using Let's Encrypt with Traefik, uncomment these:
+      - "traefik.http.routers.plex.tls=true"
+      # Specify the internal port Plex is listening on
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"      
     environment:
       - PUID=0
       - PGID=0
@@ -41,7 +50,7 @@ volumes:
       o: "addr=10.69.5.11,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14,nfsvers=4"
       device: ":/volume1/entertainment/movies"       
 
-#networks:
-#  infrastructure_frontend:
-#    external: true
-#    name: infrastructure_frontend       
+networks:
+  frontend:
+    external: true
+    name: frontend  
