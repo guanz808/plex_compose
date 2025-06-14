@@ -25,9 +25,7 @@ services:
     volumes:
       - config:/config
       - tv:/tv
-      - movies:/movies
-    ports:
-      - 32400:32400      
+      - movies:/movies  
     restart: unless-stopped
 
 volumes:
