@@ -19,7 +19,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Pacific/Honolulu
-      - VERSION=docker
+      #- VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
       - HOSTNAME="plex"
     volumes:
