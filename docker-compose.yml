@@ -21,6 +21,8 @@ services:
       - TZ=Pacific/Honolulu
       - PLEX_CLAIM=${PLEX_CLAIM}
       - HOSTNAME="plex"
+    ports:
+      - 32400:32400   
     volumes:
       - config:/config
       - tv:/tv
