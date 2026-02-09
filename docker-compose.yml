@@ -10,7 +10,7 @@ services:
       - "traefik.enable=true"
       # Define a router for Plex
       - "traefik.http.routers.plex.rule=Host(`plex.dajays.com`)" # Replace with your subdomain
-      - "traefik.http.routers.plex.entrypoints=https" # Use websecure for HTTPS
+      - "traefik.http.routers.plex.entrypoints=websecure" # Use websecure for HTTPS
       # If using Let's Encrypt with Traefik, uncomment these:
       - "traefik.http.routers.plex.tls=true"
       # Specify the internal port Plex is listening on
